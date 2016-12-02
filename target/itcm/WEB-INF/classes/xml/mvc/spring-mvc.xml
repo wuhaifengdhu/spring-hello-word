@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init = "true"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.3.xsd
+    http://www.springframework.org/schema/mvc  
+    http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<!-- annotation support -->
+	<mvc:annotation-driven >
+	    <!-- Json converter configuration -->
+	    <mvc:message-converters register-defaults="true">
+	      <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+	      	<!-- <property name="defaultCharset" value="UTF-8"/> -->
+	        <property name="supportedMediaTypes" value="application/json;charset=UTF-8"/>
+	      </bean>
+    	</mvc:message-converters>
+    	<mvc:async-support default-timeout="30000" task-executor="taskExecutor"/>
+  	</mvc:annotation-driven>
+  	
+  	<!-- modify the parameters of thread pool -->
+  	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+	    <property name="corePoolSize" value="5"/>
+	    <property name="maxPoolSize" value="50"/>
+	    <property name="queueCapacity" value="10"/>
+	    <property name="keepAliveSeconds" value="120"/>
+	</bean>
+
+	<!-- auto scan the package -->
+	<context:component-scan base-package="sg.ntu.itcm.controller" />
+	
+	<!-- static resources handler, e.g., css js imgs -->
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    
+    <!-- configure view controllers -->
+    <mvc:view-controller path="/" view-name="forward:/login"/>
+    <mvc:view-controller path="/login"/>
+    <mvc:view-controller path="/registration.html"/>
+    <mvc:view-controller path="/logout.html"/>
+    <mvc:view-controller path="/homepage.html"/>
+    <mvc:view-controller path="/expiredAccount.html"/>
+    <mvc:view-controller path="/badUser.html"/>
+    <mvc:view-controller path="/emailError.html"/>
+    <mvc:view-controller path="/home.html"/>
+    <mvc:view-controller path="/invalidSession.html"/>
+    <mvc:view-controller path="/console.html"/>
+    <mvc:view-controller path="/admin.html"/>
+    <mvc:view-controller path="/upload.html"/>
+    <mvc:view-controller path="/successRegister.html"/>
+    <mvc:view-controller path="/forgetPassword.html"/>
+    <mvc:view-controller path="/updatePassword.html"/>
+    <mvc:view-controller path="/changePassword.html"/>
+    
+    <!-- setup email and password match validators -->
+    <bean id="emailValidator" class="sg.ntu.itcm.validation.EmailValidator"/>
+    <bean id="passwordMatchesValidator" class="sg.ntu.itcm.validation.PasswordMatchesValidator"/>
+    
+    <!-- set up session locale resolver -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="en" />
+        <property name="cookieName" value="iTCMLocaleCookie" />
+        <property name="cookieMaxAge" value="4800" />
+    </bean>
+	
+	<mvc:interceptors>
+	    <mvc:interceptor>
+	        <mvc:mapping path="/**" />
+	        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+	            <property name="paramName" value="lang" />
+	        </bean>
+	    </mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- configure thymeleaf templateResolver -->
+	<bean id="templateResolver"
+       class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+	  <property name="prefix" value="/WEB-INF/html/" />
+	  <property name="suffix" value=".html" />
+	  <property name="templateMode" value="HTML" />
+	  <property name="cacheable" value="false"/>
+	</bean>
+	    
+	<bean id="templateEngine"
+	      class="org.thymeleaf.spring4.SpringTemplateEngine">
+	  <property name="templateResolver" ref="templateResolver" />
+	  <property name="additionalDialects">
+        <set>
+            <bean class="org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect" />
+        </set>
+    </property>
+	</bean>
+	
+	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+	  <property name="templateEngine" ref="templateEngine" />
+	  <property name="characterEncoding" value="UTF-8"/>
+	</bean> 
+	
+	<!-- configure ViewResolver-->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <property name="order" value="1" />
+    <property name="contentNegotiationManager">
+        <bean class="org.springframework.web.accept.ContentNegotiationManager">
+            <constructor-arg>
+                <bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+                    <constructor-arg>
+                        <map>
+                            <entry key="json" value="application/json"/>
+                            <entry key="xml" value="application/xml"/>
+                            <entry key="htm" value="text/htm" />
+                        </map>
+                    </constructor-arg>
+                </bean>
+            </constructor-arg>
+        </bean>
+    </property>
+	<property name="defaultViews">
+	    <list>
+	        <!-- convert to Json data -->
+	        <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+	    </list>
+	</property>
+    </bean>
+
+	<!-- upload file configuration -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- default encoding -->
+		<property name="defaultEncoding" value="utf-8" />
+		<!-- maximum file size -->
+		<property name="maxUploadSize" value="10485760000" />
+		<!-- maximum file size in memory -->
+		<property name="maxInMemorySize" value="40960" />
+	</bean>
+
+</beans>
