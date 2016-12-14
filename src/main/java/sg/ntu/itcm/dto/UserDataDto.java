@@ -9,59 +9,59 @@ public class UserDataDto {
     @Size(min = 1)
     private String uid;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String timestamp;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String airTemp;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String airHumidity;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String airVelocity;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String meanRadiantTemp;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String metabolicRate;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String clothingLevel;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String heartRate;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String rrInterval;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String gsr;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String skinTemp;
 	
-	@NotNull
+    @NotNull
     @Size(min = 1)
     private String userFeedback;
 	
-	public String getUserID() {
+	public String getUid() {
         return uid;
     }
 
-    public void setUserID(final String uid) {
+    public void setUid(final String uid) {
         this.uid = uid;
     }
     
@@ -73,11 +73,11 @@ public class UserDataDto {
         this.timestamp = timestamp;
     }
     
-    public String getAirTemperature() {
+    public String getAirTemp() {
         return airTemp;
     }
 
-    public void setAirTemperature(final String airTemp) {
+    public void setAirTemp(final String airTemp) {
         this.airTemp = airTemp;
     }
     
@@ -97,11 +97,11 @@ public class UserDataDto {
         this.airVelocity = airVelocity;
     }
     
-    public String getMeanRadiantTemperature() {
+    public String getMeanRadiantTemp() {
         return meanRadiantTemp;
     }
 
-    public void setMeanRadiantTemperature(final String meanRadiantTemp) {
+    public void setMeanRadiantTemp(final String meanRadiantTemp) {
         this.meanRadiantTemp = meanRadiantTemp;
     }
     
@@ -129,27 +129,27 @@ public class UserDataDto {
         this.heartRate = heartRate;
     }
     
-    public String getRRInterval() {
+    public String getRrInterval() {
         return rrInterval;
     }
 
-    public void setRRInterval(final String rrInterval) {
+    public void setRrInterval(final String rrInterval) {
         this.rrInterval = rrInterval;
     }
     
-    public String getGSR() {
+    public String getGsr() {
         return gsr;
     }
 
-    public void setGSR(final String gsr) {
+    public void setGsr(final String gsr) {
         this.gsr = gsr;
     }
     
-    public String getSkinTemperature() {
+    public String getSkinTemp() {
         return skinTemp;
     }
 
-    public void setSkinTemperature(final String skinTemp) {
+    public void setSkinTemp(final String skinTemp) {
         this.skinTemp = skinTemp;
     }
     
@@ -165,6 +165,7 @@ public class UserDataDto {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append("User [Uid=").append(uid).append("]")
+        .append("[Timestamp=").append(timestamp).append("]")
         .append("[AirTemp=").append(airTemp).append("]")
         .append("[AirHumidity=").append(airHumidity).append("]")
         .append("[AirVelocity=").append(airVelocity).append("]")

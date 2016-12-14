@@ -22,9 +22,16 @@ public class UserDataCollectionController {
 	private static Logger log = LoggerFactory.getLogger(UserDataCollectionController.class);
 	
 	@PostMapping(value = "/api/dataUpload")
-    public ResponseEntity<GenericResponse> registerUserAccount(@Valid final UserDataDto userData, final Locale locale, final HttpServletRequest request) {
-        log.info("Received user data: {}", userData);
+    public ResponseEntity<GenericResponse> userDataCollectionUpload(@Valid final UserDataDto userData, final Locale locale, final HttpServletRequest request) {
+        log.info("Received user data: {}", userData.toString());
         
+        GenericResponse responseBody = new GenericResponse("success");
+        return new ResponseEntity<GenericResponse>(responseBody, new HttpHeaders(), HttpStatus.OK);
+    }
+	
+	@PostMapping(value = "/api/feedbackUpload")
+    public ResponseEntity<GenericResponse> userFeedbackUpload(@Valid final UserDataDto userData, final Locale locale, final HttpServletRequest request) {
+        log.info("Received user feedback: {}", userData.toString());
         
         GenericResponse responseBody = new GenericResponse("success");
         return new ResponseEntity<GenericResponse>(responseBody, new HttpHeaders(), HttpStatus.OK);
