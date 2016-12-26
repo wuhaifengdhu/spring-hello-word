@@ -16,7 +16,7 @@ public class EmailModel {
     
     public EmailModel() {
         super();
-        fromEmail = "itcm@support.com";
+        fromEmail = "itcm_cap@outlook.com";
     }
 
     public String getSubject() {

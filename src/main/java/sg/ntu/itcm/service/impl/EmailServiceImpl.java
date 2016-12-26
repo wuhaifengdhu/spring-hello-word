@@ -53,7 +53,8 @@ public class EmailServiceImpl implements EmailService {
 	@Override
 	public void sendUserActivationEmail(User user, OnRegistrationCompleteEvent event, String token) {
 		EmailModel emailBody = createGenericEmailTemplate(user);
-		emailBody.setSubject(context.getMessages().getMessage("message.registration.subject", null, event.getLocale()));
+		// optional
+		//emailBody.setSubject(context.getMessages().getMessage("message.registration.subject", null, event.getLocale()));
 		emailBody.setFromName(context.getMessages().getMessage("message.from", null, event.getLocale()));
 		emailBody.setUrlLink(event.getAppUrl() + "/regitrationConfirm.html?token=" + token);
         
@@ -63,7 +64,8 @@ public class EmailServiceImpl implements EmailService {
 	@Override
 	public void resendUserActivationEmail(final User user, final Locale locale, final HttpServletRequest request, final String newToken) {
 		EmailModel emailBody = createGenericEmailTemplate(user);
-		emailBody.setSubject(context.getMessages().getMessage("message.registration.subject", null, locale));
+		// optional
+		//emailBody.setSubject(context.getMessages().getMessage("message.registration.subject", null, locale));
 		emailBody.setFromName(context.getMessages().getMessage("message.from", null, locale));
 		emailBody.setUrlLink(genericService.getAppUrl(request) + "/regitrationConfirm.html?token=" + newToken);
         
@@ -73,11 +75,12 @@ public class EmailServiceImpl implements EmailService {
 	@Override
 	public void sendResetPasswordEmail(final User user, final Locale locale, final HttpServletRequest request, final PasswordResetToken passwordResetToken) {
 		EmailModel emailBody = createGenericEmailTemplate(user);
-		emailBody.setSubject(context.getMessages().getMessage("message.resetPassword.subject", null, locale));
+		// optional
+		//emailBody.setSubject(context.getMessages().getMessage("message.resetPassword.subject", null, locale));
 		emailBody.setFromName(context.getMessages().getMessage("message.from", null, locale));
 		emailBody.setUrlLink(genericService.getAppUrl(request) + "/user/changePassword?id=" + passwordResetToken.getId() + "&token=" + passwordResetToken.getUserPasswordResetToken());
         
-        sendEmailToRabbitQueue(emailBody, new EmailTemplates().getUserActivationEmailTemplate(emailBody.getUsername(), emailBody.getUrlLink()));
+        sendEmailToRabbitQueue(emailBody, new EmailTemplates().getUserResetPasswordEmailTemplate(emailBody.getUsername(), emailBody.getUrlLink()));
 	}
 	
 	private EmailModel createGenericEmailTemplate(final User user) {
