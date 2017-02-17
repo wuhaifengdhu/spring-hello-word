@@ -52,6 +52,26 @@ public class UserDataDto {
     @NotNull
     @Size(min = 1)
     private String skinTemp;
+    
+    @NotNull
+    @Size(min = 1)
+    private String accelerationX;
+    @NotNull
+    @Size(min = 1)
+    private String accelerationY;
+    @NotNull
+    @Size(min = 1)
+    private String accelerationZ;
+    
+    @NotNull
+    @Size(min = 1)
+    private String angularVelocityX;
+    @NotNull
+    @Size(min = 1)
+    private String angularVelocityY;
+    @NotNull
+    @Size(min = 1)
+    private String angularVelocityZ;
 	
     @NotNull
     @Size(min = 1)
@@ -153,6 +173,54 @@ public class UserDataDto {
         this.skinTemp = skinTemp;
     }
     
+    public String getAccelerationX() {
+        return accelerationX;
+    }
+
+    public void setAccelerationX(final String accelerationX) {
+        this.accelerationX = accelerationX;
+    }
+    
+    public String getAccelerationY() {
+        return accelerationY;
+    }
+
+    public void setAccelerationY(final String accelerationY) {
+        this.accelerationY = accelerationY;
+    }
+    
+    public String getAccelerationZ() {
+        return accelerationZ;
+    }
+
+    public void setAccelerationZ(final String accelerationZ) {
+        this.accelerationZ = accelerationZ;
+    }
+    
+    public String getAngularVelocityX() {
+        return angularVelocityX;
+    }
+
+    public void setAngularVelocityX(final String angularVelocityX) {
+        this.angularVelocityX = angularVelocityX;
+    }
+    
+    public String getAngularVelocityY() {
+        return angularVelocityY;
+    }
+
+    public void setAngularVelocityY(final String angularVelocityY) {
+        this.angularVelocityY = angularVelocityY;
+    }
+    
+    public String getAngularVelocityZ() {
+        return angularVelocityZ;
+    }
+
+    public void setAngularVelocityZ(final String angularVelocityZ) {
+        this.angularVelocityZ = angularVelocityZ;
+    }
+    
     public String getUserFeedback() {
         return userFeedback;
     }
@@ -176,6 +244,12 @@ public class UserDataDto {
         .append("[RRInterval=").append(rrInterval).append("]")
         .append("[GSR=").append(gsr).append("]")
         .append("[SkinTemp=").append(skinTemp).append("]")
+        .append("[AccelerationX=").append(accelerationX).append("]")
+        .append("[AccelerationY=").append(accelerationY).append("]")
+        .append("[AccelerationZ=").append(accelerationZ).append("]")
+        .append("[AngularVelocityX=").append(angularVelocityX).append("]")
+        .append("[AngularVelocityY=").append(angularVelocityY).append("]")
+        .append("[AngularVelocityZ=").append(angularVelocityZ).append("]")
         .append("[UserFeedback=").append(userFeedback).append("]");
         return builder.toString();
     }

@@ -49,6 +49,12 @@ public class UserDataCollectionController {
         userData.setRrinterval(userDataDto.getRrInterval());
         userData.setGsr(userDataDto.getGsr());
         userData.setSkintemp(userDataDto.getSkinTemp());
+        userData.setAccelerationx(userDataDto.getAccelerationX());
+        userData.setAccelerationy(userDataDto.getAccelerationY());
+        userData.setAccelerationz(userDataDto.getAccelerationZ());
+        userData.setAngularvelocityx(userDataDto.getAngularVelocityX());
+        userData.setAngularvelocityy(userDataDto.getAngularVelocityY());
+        userData.setAngularvelocityz(userDataDto.getAngularVelocityZ());
         userData.setUserfeedback(userDataDto.getUserFeedback());
         userDataMapper.insert(userData);
         
@@ -73,6 +79,12 @@ public class UserDataCollectionController {
         userFeedbackData.setRrinterval(userFeedbackDataDto.getRrInterval());
         userFeedbackData.setGsr(userFeedbackDataDto.getGsr());
         userFeedbackData.setSkintemp(userFeedbackDataDto.getSkinTemp());
+        userFeedbackData.setAccelerationx(userFeedbackDataDto.getAccelerationX());
+        userFeedbackData.setAccelerationy(userFeedbackDataDto.getAccelerationY());
+        userFeedbackData.setAccelerationz(userFeedbackDataDto.getAccelerationZ());
+        userFeedbackData.setAngularvelocityx(userFeedbackDataDto.getAngularVelocityX());
+        userFeedbackData.setAngularvelocityy(userFeedbackDataDto.getAngularVelocityY());
+        userFeedbackData.setAngularvelocityz(userFeedbackDataDto.getAngularVelocityZ());
         userFeedbackData.setUserfeedback(userFeedbackDataDto.getUserFeedback());
         userFeedbackDataMapper.insert(userFeedbackData);
         
