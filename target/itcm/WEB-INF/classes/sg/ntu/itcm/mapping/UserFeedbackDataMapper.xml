@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sg.ntu.itcm.dao.UserFeedbackDataMapper" >
+  <resultMap id="BaseResultMap" type="sg.ntu.itcm.model.UserFeedbackData" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="year" property="year" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="userFeedback" property="userfeedback" jdbcType="VARCHAR" />
+    <result column="airTemp" property="airtemp" jdbcType="VARCHAR" />
+    <result column="airHumidity" property="airhumidity" jdbcType="VARCHAR" />
+    <result column="airVelocity" property="airvelocity" jdbcType="VARCHAR" />
+    <result column="meanRadiantTemp" property="meanradianttemp" jdbcType="VARCHAR" />
+    <result column="metabolicRate" property="metabolicrate" jdbcType="VARCHAR" />
+    <result column="clothingLevel" property="clothinglevel" jdbcType="VARCHAR" />
+    <result column="ambientLight" property="ambientlight" jdbcType="VARCHAR" />
+    <result column="airPressure" property="airpressure" jdbcType="VARCHAR" />
+    <result column="uvLevelData" property="uvleveldata" jdbcType="VARCHAR" />
+    <result column="accelerationX" property="accelerationx" jdbcType="VARCHAR" />
+    <result column="accelerationY" property="accelerationy" jdbcType="VARCHAR" />
+    <result column="accelerationZ" property="accelerationz" jdbcType="VARCHAR" />
+    <result column="flightsAscended" property="flightsascended" jdbcType="VARCHAR" />
+    <result column="flightsDescended" property="flightsdescended" jdbcType="VARCHAR" />
+    <result column="rate" property="rate" jdbcType="VARCHAR" />
+    <result column="steppingGain" property="steppinggain" jdbcType="VARCHAR" />
+    <result column="steppingLoss" property="steppingloss" jdbcType="VARCHAR" />
+    <result column="stepsAscended" property="stepsascended" jdbcType="VARCHAR" />
+    <result column="stepsDescended" property="stepsdescended" jdbcType="VARCHAR" />
+    <result column="totalGain" property="totalgain" jdbcType="VARCHAR" />
+    <result column="totalLoss" property="totalloss" jdbcType="VARCHAR" />
+    <result column="caloryToday" property="calorytoday" jdbcType="VARCHAR" />
+    <result column="distanceToday" property="distancetoday" jdbcType="VARCHAR" />
+    <result column="currentPace" property="currentpace" jdbcType="VARCHAR" />
+    <result column="currentSpeed" property="currentspeed" jdbcType="VARCHAR" />
+    <result column="currentMontionType" property="currentmontiontype" jdbcType="VARCHAR" />
+    <result column="angularVelocityX" property="angularvelocityx" jdbcType="VARCHAR" />
+    <result column="angularVelocityY" property="angularvelocityy" jdbcType="VARCHAR" />
+    <result column="angularVelocityZ" property="angularvelocityz" jdbcType="VARCHAR" />
+    <result column="gsr" property="gsr" jdbcType="VARCHAR" />
+    <result column="heartRate" property="heartrate" jdbcType="VARCHAR" />
+    <result column="stepToday" property="steptoday" jdbcType="VARCHAR" />
+    <result column="rrInterval" property="rrinterval" jdbcType="VARCHAR" />
+    <result column="skinTemp" property="skintemp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uid, year, date, time, userFeedback, airTemp, airHumidity, airVelocity, meanRadiantTemp, 
+    metabolicRate, clothingLevel, ambientLight, airPressure, uvLevelData, accelerationX, 
+    accelerationY, accelerationZ, flightsAscended, flightsDescended, rate, steppingGain, 
+    steppingLoss, stepsAscended, stepsDescended, totalGain, totalLoss, caloryToday, distanceToday, 
+    currentPace, currentSpeed, currentMontionType, angularVelocityX, angularVelocityY, 
+    angularVelocityZ, gsr, heartRate, stepToday, rrInterval, skinTemp
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_feedback_comfort_data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_feedback_comfort_data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="sg.ntu.itcm.model.UserFeedbackData" >
+    insert into user_feedback_comfort_data (id, uid, year, 
+      date, time, userFeedback, 
+      airTemp, airHumidity, airVelocity, 
+      meanRadiantTemp, metabolicRate, clothingLevel, 
+      ambientLight, airPressure, uvLevelData, 
+      accelerationX, accelerationY, accelerationZ, 
+      flightsAscended, flightsDescended, rate, 
+      steppingGain, steppingLoss, stepsAscended, 
+      stepsDescended, totalGain, totalLoss, 
+      caloryToday, distanceToday, currentPace, 
+      currentSpeed, currentMontionType, angularVelocityX, 
+      angularVelocityY, angularVelocityZ, gsr, 
+      heartRate, stepToday, rrInterval, 
+      skinTemp)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, #{userfeedback,jdbcType=VARCHAR}, 
+      #{airtemp,jdbcType=VARCHAR}, #{airhumidity,jdbcType=VARCHAR}, #{airvelocity,jdbcType=VARCHAR}, 
+      #{meanradianttemp,jdbcType=VARCHAR}, #{metabolicrate,jdbcType=VARCHAR}, #{clothinglevel,jdbcType=VARCHAR}, 
+      #{ambientlight,jdbcType=VARCHAR}, #{airpressure,jdbcType=VARCHAR}, #{uvleveldata,jdbcType=VARCHAR}, 
+      #{accelerationx,jdbcType=VARCHAR}, #{accelerationy,jdbcType=VARCHAR}, #{accelerationz,jdbcType=VARCHAR}, 
+      #{flightsascended,jdbcType=VARCHAR}, #{flightsdescended,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, 
+      #{steppinggain,jdbcType=VARCHAR}, #{steppingloss,jdbcType=VARCHAR}, #{stepsascended,jdbcType=VARCHAR}, 
+      #{stepsdescended,jdbcType=VARCHAR}, #{totalgain,jdbcType=VARCHAR}, #{totalloss,jdbcType=VARCHAR}, 
+      #{calorytoday,jdbcType=VARCHAR}, #{distancetoday,jdbcType=VARCHAR}, #{currentpace,jdbcType=VARCHAR}, 
+      #{currentspeed,jdbcType=VARCHAR}, #{currentmontiontype,jdbcType=VARCHAR}, #{angularvelocityx,jdbcType=VARCHAR}, 
+      #{angularvelocityy,jdbcType=VARCHAR}, #{angularvelocityz,jdbcType=VARCHAR}, #{gsr,jdbcType=VARCHAR}, 
+      #{heartrate,jdbcType=VARCHAR}, #{steptoday,jdbcType=VARCHAR}, #{rrinterval,jdbcType=VARCHAR}, 
+      #{skintemp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sg.ntu.itcm.model.UserFeedbackData" >
+    insert into user_feedback_comfort_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="userfeedback != null" >
+        userFeedback,
+      </if>
+      <if test="airtemp != null" >
+        airTemp,
+      </if>
+      <if test="airhumidity != null" >
+        airHumidity,
+      </if>
+      <if test="airvelocity != null" >
+        airVelocity,
+      </if>
+      <if test="meanradianttemp != null" >
+        meanRadiantTemp,
+      </if>
+      <if test="metabolicrate != null" >
+        metabolicRate,
+      </if>
+      <if test="clothinglevel != null" >
+        clothingLevel,
+      </if>
+      <if test="ambientlight != null" >
+        ambientLight,
+      </if>
+      <if test="airpressure != null" >
+        airPressure,
+      </if>
+      <if test="uvleveldata != null" >
+        uvLevelData,
+      </if>
+      <if test="accelerationx != null" >
+        accelerationX,
+      </if>
+      <if test="accelerationy != null" >
+        accelerationY,
+      </if>
+      <if test="accelerationz != null" >
+        accelerationZ,
+      </if>
+      <if test="flightsascended != null" >
+        flightsAscended,
+      </if>
+      <if test="flightsdescended != null" >
+        flightsDescended,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="steppinggain != null" >
+        steppingGain,
+      </if>
+      <if test="steppingloss != null" >
+        steppingLoss,
+      </if>
+      <if test="stepsascended != null" >
+        stepsAscended,
+      </if>
+      <if test="stepsdescended != null" >
+        stepsDescended,
+      </if>
+      <if test="totalgain != null" >
+        totalGain,
+      </if>
+      <if test="totalloss != null" >
+        totalLoss,
+      </if>
+      <if test="calorytoday != null" >
+        caloryToday,
+      </if>
+      <if test="distancetoday != null" >
+        distanceToday,
+      </if>
+      <if test="currentpace != null" >
+        currentPace,
+      </if>
+      <if test="currentspeed != null" >
+        currentSpeed,
+      </if>
+      <if test="currentmontiontype != null" >
+        currentMontionType,
+      </if>
+      <if test="angularvelocityx != null" >
+        angularVelocityX,
+      </if>
+      <if test="angularvelocityy != null" >
+        angularVelocityY,
+      </if>
+      <if test="angularvelocityz != null" >
+        angularVelocityZ,
+      </if>
+      <if test="gsr != null" >
+        gsr,
+      </if>
+      <if test="heartrate != null" >
+        heartRate,
+      </if>
+      <if test="steptoday != null" >
+        stepToday,
+      </if>
+      <if test="rrinterval != null" >
+        rrInterval,
+      </if>
+      <if test="skintemp != null" >
+        skinTemp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="userfeedback != null" >
+        #{userfeedback,jdbcType=VARCHAR},
+      </if>
+      <if test="airtemp != null" >
+        #{airtemp,jdbcType=VARCHAR},
+      </if>
+      <if test="airhumidity != null" >
+        #{airhumidity,jdbcType=VARCHAR},
+      </if>
+      <if test="airvelocity != null" >
+        #{airvelocity,jdbcType=VARCHAR},
+      </if>
+      <if test="meanradianttemp != null" >
+        #{meanradianttemp,jdbcType=VARCHAR},
+      </if>
+      <if test="metabolicrate != null" >
+        #{metabolicrate,jdbcType=VARCHAR},
+      </if>
+      <if test="clothinglevel != null" >
+        #{clothinglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="ambientlight != null" >
+        #{ambientlight,jdbcType=VARCHAR},
+      </if>
+      <if test="airpressure != null" >
+        #{airpressure,jdbcType=VARCHAR},
+      </if>
+      <if test="uvleveldata != null" >
+        #{uvleveldata,jdbcType=VARCHAR},
+      </if>
+      <if test="accelerationx != null" >
+        #{accelerationx,jdbcType=VARCHAR},
+      </if>
+      <if test="accelerationy != null" >
+        #{accelerationy,jdbcType=VARCHAR},
+      </if>
+      <if test="accelerationz != null" >
+        #{accelerationz,jdbcType=VARCHAR},
+      </if>
+      <if test="flightsascended != null" >
+        #{flightsascended,jdbcType=VARCHAR},
+      </if>
+      <if test="flightsdescended != null" >
+        #{flightsdescended,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=VARCHAR},
+      </if>
+      <if test="steppinggain != null" >
+        #{steppinggain,jdbcType=VARCHAR},
+      </if>
+      <if test="steppingloss != null" >
+        #{steppingloss,jdbcType=VARCHAR},
+      </if>
+      <if test="stepsascended != null" >
+        #{stepsascended,jdbcType=VARCHAR},
+      </if>
+      <if test="stepsdescended != null" >
+        #{stepsdescended,jdbcType=VARCHAR},
+      </if>
+      <if test="totalgain != null" >
+        #{totalgain,jdbcType=VARCHAR},
+      </if>
+      <if test="totalloss != null" >
+        #{totalloss,jdbcType=VARCHAR},
+      </if>
+      <if test="calorytoday != null" >
+        #{calorytoday,jdbcType=VARCHAR},
+      </if>
+      <if test="distancetoday != null" >
+        #{distancetoday,jdbcType=VARCHAR},
+      </if>
+      <if test="currentpace != null" >
+        #{currentpace,jdbcType=VARCHAR},
+      </if>
+      <if test="currentspeed != null" >
+        #{currentspeed,jdbcType=VARCHAR},
+      </if>
+      <if test="currentmontiontype != null" >
+        #{currentmontiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="angularvelocityx != null" >
+        #{angularvelocityx,jdbcType=VARCHAR},
+      </if>
+      <if test="angularvelocityy != null" >
+        #{angularvelocityy,jdbcType=VARCHAR},
+      </if>
+      <if test="angularvelocityz != null" >
+        #{angularvelocityz,jdbcType=VARCHAR},
+      </if>
+      <if test="gsr != null" >
+        #{gsr,jdbcType=VARCHAR},
+      </if>
+      <if test="heartrate != null" >
+        #{heartrate,jdbcType=VARCHAR},
+      </if>
+      <if test="steptoday != null" >
+        #{steptoday,jdbcType=VARCHAR},
+      </if>
+      <if test="rrinterval != null" >
+        #{rrinterval,jdbcType=VARCHAR},
+      </if>
+      <if test="skintemp != null" >
+        #{skintemp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sg.ntu.itcm.model.UserFeedbackData" >
+    update user_feedback_comfort_data
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="userfeedback != null" >
+        userFeedback = #{userfeedback,jdbcType=VARCHAR},
+      </if>
+      <if test="airtemp != null" >
+        airTemp = #{airtemp,jdbcType=VARCHAR},
+      </if>
+      <if test="airhumidity != null" >
+        airHumidity = #{airhumidity,jdbcType=VARCHAR},
+      </if>
+      <if test="airvelocity != null" >
+        airVelocity = #{airvelocity,jdbcType=VARCHAR},
+      </if>
+      <if test="meanradianttemp != null" >
+        meanRadiantTemp = #{meanradianttemp,jdbcType=VARCHAR},
+      </if>
+      <if test="metabolicrate != null" >
+        metabolicRate = #{metabolicrate,jdbcType=VARCHAR},
+      </if>
+      <if test="clothinglevel != null" >
+        clothingLevel = #{clothinglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="ambientlight != null" >
+        ambientLight = #{ambientlight,jdbcType=VARCHAR},
+      </if>
+      <if test="airpressure != null" >
+        airPressure = #{airpressure,jdbcType=VARCHAR},
+      </if>
+      <if test="uvleveldata != null" >
+        uvLevelData = #{uvleveldata,jdbcType=VARCHAR},
+      </if>
+      <if test="accelerationx != null" >
+        accelerationX = #{accelerationx,jdbcType=VARCHAR},
+      </if>
+      <if test="accelerationy != null" >
+        accelerationY = #{accelerationy,jdbcType=VARCHAR},
+      </if>
+      <if test="accelerationz != null" >
+        accelerationZ = #{accelerationz,jdbcType=VARCHAR},
+      </if>
+      <if test="flightsascended != null" >
+        flightsAscended = #{flightsascended,jdbcType=VARCHAR},
+      </if>
+      <if test="flightsdescended != null" >
+        flightsDescended = #{flightsdescended,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=VARCHAR},
+      </if>
+      <if test="steppinggain != null" >
+        steppingGain = #{steppinggain,jdbcType=VARCHAR},
+      </if>
+      <if test="steppingloss != null" >
+        steppingLoss = #{steppingloss,jdbcType=VARCHAR},
+      </if>
+      <if test="stepsascended != null" >
+        stepsAscended = #{stepsascended,jdbcType=VARCHAR},
+      </if>
+      <if test="stepsdescended != null" >
+        stepsDescended = #{stepsdescended,jdbcType=VARCHAR},
+      </if>
+      <if test="totalgain != null" >
+        totalGain = #{totalgain,jdbcType=VARCHAR},
+      </if>
+      <if test="totalloss != null" >
+        totalLoss = #{totalloss,jdbcType=VARCHAR},
+      </if>
+      <if test="calorytoday != null" >
+        caloryToday = #{calorytoday,jdbcType=VARCHAR},
+      </if>
+      <if test="distancetoday != null" >
+        distanceToday = #{distancetoday,jdbcType=VARCHAR},
+      </if>
+      <if test="currentpace != null" >
+        currentPace = #{currentpace,jdbcType=VARCHAR},
+      </if>
+      <if test="currentspeed != null" >
+        currentSpeed = #{currentspeed,jdbcType=VARCHAR},
+      </if>
+      <if test="currentmontiontype != null" >
+        currentMontionType = #{currentmontiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="angularvelocityx != null" >
+        angularVelocityX = #{angularvelocityx,jdbcType=VARCHAR},
+      </if>
+      <if test="angularvelocityy != null" >
+        angularVelocityY = #{angularvelocityy,jdbcType=VARCHAR},
+      </if>
+      <if test="angularvelocityz != null" >
+        angularVelocityZ = #{angularvelocityz,jdbcType=VARCHAR},
+      </if>
+      <if test="gsr != null" >
+        gsr = #{gsr,jdbcType=VARCHAR},
+      </if>
+      <if test="heartrate != null" >
+        heartRate = #{heartrate,jdbcType=VARCHAR},
+      </if>
+      <if test="steptoday != null" >
+        stepToday = #{steptoday,jdbcType=VARCHAR},
+      </if>
+      <if test="rrinterval != null" >
+        rrInterval = #{rrinterval,jdbcType=VARCHAR},
+      </if>
+      <if test="skintemp != null" >
+        skinTemp = #{skintemp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sg.ntu.itcm.model.UserFeedbackData" >
+    update user_feedback_comfort_data
+    set uid = #{uid,jdbcType=VARCHAR},
+      year = #{year,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      userFeedback = #{userfeedback,jdbcType=VARCHAR},
+      airTemp = #{airtemp,jdbcType=VARCHAR},
+      airHumidity = #{airhumidity,jdbcType=VARCHAR},
+      airVelocity = #{airvelocity,jdbcType=VARCHAR},
+      meanRadiantTemp = #{meanradianttemp,jdbcType=VARCHAR},
+      metabolicRate = #{metabolicrate,jdbcType=VARCHAR},
+      clothingLevel = #{clothinglevel,jdbcType=VARCHAR},
+      ambientLight = #{ambientlight,jdbcType=VARCHAR},
+      airPressure = #{airpressure,jdbcType=VARCHAR},
+      uvLevelData = #{uvleveldata,jdbcType=VARCHAR},
+      accelerationX = #{accelerationx,jdbcType=VARCHAR},
+      accelerationY = #{accelerationy,jdbcType=VARCHAR},
+      accelerationZ = #{accelerationz,jdbcType=VARCHAR},
+      flightsAscended = #{flightsascended,jdbcType=VARCHAR},
+      flightsDescended = #{flightsdescended,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR},
+      steppingGain = #{steppinggain,jdbcType=VARCHAR},
+      steppingLoss = #{steppingloss,jdbcType=VARCHAR},
+      stepsAscended = #{stepsascended,jdbcType=VARCHAR},
+      stepsDescended = #{stepsdescended,jdbcType=VARCHAR},
+      totalGain = #{totalgain,jdbcType=VARCHAR},
+      totalLoss = #{totalloss,jdbcType=VARCHAR},
+      caloryToday = #{calorytoday,jdbcType=VARCHAR},
+      distanceToday = #{distancetoday,jdbcType=VARCHAR},
+      currentPace = #{currentpace,jdbcType=VARCHAR},
+      currentSpeed = #{currentspeed,jdbcType=VARCHAR},
+      currentMontionType = #{currentmontiontype,jdbcType=VARCHAR},
+      angularVelocityX = #{angularvelocityx,jdbcType=VARCHAR},
+      angularVelocityY = #{angularvelocityy,jdbcType=VARCHAR},
+      angularVelocityZ = #{angularvelocityz,jdbcType=VARCHAR},
+      gsr = #{gsr,jdbcType=VARCHAR},
+      heartRate = #{heartrate,jdbcType=VARCHAR},
+      stepToday = #{steptoday,jdbcType=VARCHAR},
+      rrInterval = #{rrinterval,jdbcType=VARCHAR},
+      skinTemp = #{skintemp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
