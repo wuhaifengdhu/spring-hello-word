@@ -36,12 +36,12 @@
 			 <property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!-- tableName is the table name in database, domainObjectName is the java class/object name -->
-		<table tableName="user_data" domainObjectName="UserData"
+		<table tableName="auto_collected_comfort_data" domainObjectName="UserData"
 			enableCountByExample="fasle" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false" >
 		</table>
-		<table tableName="user_feedback_data" domainObjectName="UserFeedbackData"
+		<table tableName="user_feedback_comfort_data" domainObjectName="UserFeedbackData"
 			enableCountByExample="fasle" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false" >

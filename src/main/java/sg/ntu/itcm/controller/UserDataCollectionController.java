@@ -34,28 +34,51 @@ public class UserDataCollectionController {
 	
 	@PostMapping(value = "/api/dataUpload")
     public ResponseEntity<GenericResponse> userDataCollectionUpload(@Valid final UserDataDto userDataDto, final Locale locale, final HttpServletRequest request) {
-        log.info("Received user data: {}", userDataDto.toString());
+        log.info("Received auto collected user data.");
         
-        final UserData userData = new UserData();
+        UserData userData = new UserData();
         userData.setUid(userDataDto.getUid());
-        userData.setTimestamp(userDataDto.getTimestamp());
+        userData.setYear(userDataDto.getYear());
+        userData.setDate(userDataDto.getDate());
+        userData.setTime(userDataDto.getTime());
+        userData.setUserfeedback(userDataDto.getUserFeedback());
+        
         userData.setAirtemp(userDataDto.getAirTemp());
         userData.setAirhumidity(userDataDto.getAirHumidity());
-        userData.setAirvelocity(userDataDto.getAirVelocity());
+        userData.setAirvelocity(userDataDto.getAirvelocity());
         userData.setMeanradianttemp(userDataDto.getMeanRadiantTemp());
         userData.setMetabolicrate(userDataDto.getMetabolicRate());
         userData.setClothinglevel(userDataDto.getClothingLevel());
-        userData.setHeartrate(userDataDto.getHeartRate());
-        userData.setRrinterval(userDataDto.getRrInterval());
-        userData.setGsr(userDataDto.getGsr());
-        userData.setSkintemp(userDataDto.getSkinTemp());
+        
+        userData.setAmbientlight(userDataDto.getAmbientLight());
+        userData.setAirpressure(userDataDto.getAirPressure());
+        userData.setUvleveldata(userDataDto.getUvLevelData());
         userData.setAccelerationx(userDataDto.getAccelerationX());
         userData.setAccelerationy(userDataDto.getAccelerationY());
         userData.setAccelerationz(userDataDto.getAccelerationZ());
+        userData.setFlightsascended(userDataDto.getFlightsAscended());
+        userData.setFlightsdescended(userDataDto.getFlightsDescended());
+        userData.setRate(userDataDto.getRate());
+        userData.setSteppinggain(userDataDto.getSteppingGain());
+        userData.setSteppingloss(userDataDto.getSteppingLoss());
+        userData.setStepsascended(userDataDto.getStepsAscended());
+        userData.setStepsdescended(userDataDto.getStepsDescended());
+        userData.setTotalgain(userDataDto.getTotalGain());
+        userData.setTotalloss(userDataDto.getTotalLoss());
+        userData.setCalorytoday(userDataDto.getCaloryToday());
+        userData.setDistancetoday(userDataDto.getDistanceToday());
+        userData.setCurrentpace(userDataDto.getCurrentPace());
+        userData.setCurrentspeed(userDataDto.getCurrentSpeed());
+        userData.setCurrentmontiontype(userDataDto.getCurrentMontionType());
         userData.setAngularvelocityx(userDataDto.getAngularVelocityX());
         userData.setAngularvelocityy(userDataDto.getAngularVelocityY());
         userData.setAngularvelocityz(userDataDto.getAngularVelocityZ());
-        userData.setUserfeedback(userDataDto.getUserFeedback());
+        userData.setGsr(userDataDto.getGsr());
+        userData.setHeartrate(userDataDto.getHeartRate());
+        userData.setSteptoday(userDataDto.getStepToday());
+        userData.setRrinterval(userDataDto.getRrInterval());
+        userData.setSkintemp(userDataDto.getSkinTemp());
+        
         userDataMapper.insert(userData);
         
         GenericResponse responseBody = new GenericResponse("success");
@@ -64,28 +87,51 @@ public class UserDataCollectionController {
 	
 	@PostMapping(value = "/api/feedbackUpload")
     public ResponseEntity<GenericResponse> userFeedbackUpload(@Valid final UserDataDto userFeedbackDataDto, final Locale locale, final HttpServletRequest request) {
-        log.info("Received user feedback: {}", userFeedbackDataDto.toString());
+        log.info("Received user feedback.");
         
-        final UserFeedbackData userFeedbackData = new UserFeedbackData();
+        UserFeedbackData userFeedbackData = new UserFeedbackData();
         userFeedbackData.setUid(userFeedbackDataDto.getUid());
-        userFeedbackData.setTimestamp(userFeedbackDataDto.getTimestamp());
+        userFeedbackData.setYear(userFeedbackDataDto.getYear());
+        userFeedbackData.setDate(userFeedbackDataDto.getDate());
+        userFeedbackData.setTime(userFeedbackDataDto.getTime());
+        userFeedbackData.setUserfeedback(userFeedbackDataDto.getUserFeedback());
+        
         userFeedbackData.setAirtemp(userFeedbackDataDto.getAirTemp());
         userFeedbackData.setAirhumidity(userFeedbackDataDto.getAirHumidity());
-        userFeedbackData.setAirvelocity(userFeedbackDataDto.getAirVelocity());
+        userFeedbackData.setAirvelocity(userFeedbackDataDto.getAirvelocity());
         userFeedbackData.setMeanradianttemp(userFeedbackDataDto.getMeanRadiantTemp());
         userFeedbackData.setMetabolicrate(userFeedbackDataDto.getMetabolicRate());
         userFeedbackData.setClothinglevel(userFeedbackDataDto.getClothingLevel());
-        userFeedbackData.setHeartrate(userFeedbackDataDto.getHeartRate());
-        userFeedbackData.setRrinterval(userFeedbackDataDto.getRrInterval());
-        userFeedbackData.setGsr(userFeedbackDataDto.getGsr());
-        userFeedbackData.setSkintemp(userFeedbackDataDto.getSkinTemp());
+        
+        userFeedbackData.setAmbientlight(userFeedbackDataDto.getAmbientLight());
+        userFeedbackData.setAirpressure(userFeedbackDataDto.getAirPressure());
+        userFeedbackData.setUvleveldata(userFeedbackDataDto.getUvLevelData());
         userFeedbackData.setAccelerationx(userFeedbackDataDto.getAccelerationX());
         userFeedbackData.setAccelerationy(userFeedbackDataDto.getAccelerationY());
         userFeedbackData.setAccelerationz(userFeedbackDataDto.getAccelerationZ());
+        userFeedbackData.setFlightsascended(userFeedbackDataDto.getFlightsAscended());
+        userFeedbackData.setFlightsdescended(userFeedbackDataDto.getFlightsDescended());
+        userFeedbackData.setRate(userFeedbackDataDto.getRate());
+        userFeedbackData.setSteppinggain(userFeedbackDataDto.getSteppingGain());
+        userFeedbackData.setSteppingloss(userFeedbackDataDto.getSteppingLoss());
+        userFeedbackData.setStepsascended(userFeedbackDataDto.getStepsAscended());
+        userFeedbackData.setStepsdescended(userFeedbackDataDto.getStepsDescended());
+        userFeedbackData.setTotalgain(userFeedbackDataDto.getTotalGain());
+        userFeedbackData.setTotalloss(userFeedbackDataDto.getTotalLoss());
+        userFeedbackData.setCalorytoday(userFeedbackDataDto.getCaloryToday());
+        userFeedbackData.setDistancetoday(userFeedbackDataDto.getDistanceToday());
+        userFeedbackData.setCurrentpace(userFeedbackDataDto.getCurrentPace());
+        userFeedbackData.setCurrentspeed(userFeedbackDataDto.getCurrentSpeed());
+        userFeedbackData.setCurrentmontiontype(userFeedbackDataDto.getCurrentMontionType());
         userFeedbackData.setAngularvelocityx(userFeedbackDataDto.getAngularVelocityX());
         userFeedbackData.setAngularvelocityy(userFeedbackDataDto.getAngularVelocityY());
         userFeedbackData.setAngularvelocityz(userFeedbackDataDto.getAngularVelocityZ());
-        userFeedbackData.setUserfeedback(userFeedbackDataDto.getUserFeedback());
+        userFeedbackData.setGsr(userFeedbackDataDto.getGsr());
+        userFeedbackData.setHeartrate(userFeedbackDataDto.getHeartRate());
+        userFeedbackData.setSteptoday(userFeedbackDataDto.getStepToday());
+        userFeedbackData.setRrinterval(userFeedbackDataDto.getRrInterval());
+        userFeedbackData.setSkintemp(userFeedbackDataDto.getSkinTemp());
+        
         userFeedbackDataMapper.insert(userFeedbackData);
         
         GenericResponse responseBody = new GenericResponse("success");
