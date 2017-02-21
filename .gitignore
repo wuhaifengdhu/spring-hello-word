@@ -27,6 +27,7 @@ target/
 .classpath
 .project
 .settings
+.metadata/
 
 
 # special for project
